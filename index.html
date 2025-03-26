@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dünyanın En Güzel Annesi ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            overflow: hidden;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .letter {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            text-align: center;
+            position: absolute;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+
+        .letter.active {
+            opacity: 1;
+            transform: translateY(0);
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff4081;
+            font-size: 24px;
+            animation: float 6s linear infinite;
+        }
+
+        .compliment {
+            position: absolute;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: float 8s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .flower {
+            width: 200px;
+            margin: 20px auto;
+            display: block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(0.95); }
+        }
+
+        .click-instruction {
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Letters -->
+        <div class="letter active" onclick="nextLetter()">
+            <h1>Hoşgeldin Dünyanın En Güzel Kadını, En İyi Annesi ❤️😊</h1>
+            <div class="click-instruction">Tıklayarak diğer mesaja geç</div>
+        </div>
+        
+        <div class="letter" onclick="nextLetter()">
+            <h2>Seni Çok Seviyoruz!<br>İyiki Varsın, İyiki Bizimsin Canımın İçi ❤️💐</h2>
+            <div class="click-instruction">Tıklayarak diğer mesaja geç</div>
+        </div>
+        
+        <div class="letter" onclick="nextLetter()">
+            <h2>Hediyen 🎁</h2>
+            <p>(Para olmadığı için hediye yapamadım,<br>ama kalbimden geçenleri bu siteyle sana ulaştırmak istedim)</p>
+            <img src="https://raw.githubusercontent.com/m3sto/Annemehediye/main/%E2%80%94Pngtree%E2%80%94flower%20bouquet_16936472.png" class="flower">
+        </div>
+    </div>
+
+    <script>
+        // Letter management
+        let currentLetter = 0;
+        const letters = document.querySelectorAll('.letter');
+        
+        function nextLetter() {
+            if(currentLetter < letters.length-1) {
+                letters[currentLetter].classList.remove('active');
+                currentLetter++;
+                letters[currentLetter].classList.add('active');
+            }
+        }
+
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        // Create compliment bubbles
+        const compliments = [
+            "Güzeller Güzeli İçin Her Şey 🌟",
+            "Dünyanın En İyi Kadını 🥇",
+            "Dünyanın En Tatlı Annesi 🍬",
+            "Kalbin Altından Daha Değerli 💎",
+            "Her Şeyin En Güzeline Layıksın 🌹"
+        ];
+        
+        function createCompliment() {
+            const bubble = document.createElement('div');
+            bubble.className = 'compliment';
+            bubble.textContent = compliments[Math.floor(Math.random()*compliments.length)];
+            bubble.style.left = Math.random() * 90 + 'vw';
+            bubble.style.animationDuration = (Math.random() * 3 + 8) + 's';
+            document.body.appendChild(bubble);
+            
+            setTimeout(() => bubble.remove(), 8000);
+        }
+
+        // Start animations
+        setInterval(createHeart, 300);
+        setInterval(createCompliment, 5000);
+
+        // Music (optional - uncomment to add)
+        /*
+        const audio = new Audio('your-music-file.mp3');
+        audio.loop = true;
+        document.body.addEventListener('click', () => audio.play());
+        */
+    </script>
+    
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</body>
+</html>
